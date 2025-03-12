@@ -4,18 +4,30 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.kir.mycomposesample.ui.theme.MyComposeSampleTheme
 
-class MainActivity : ComponentActivity() {
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 
+/**
+ *  remember {mutableStateOf()} 사용
+ *
+ *  변경가능한
+ *
+ */
+class Sample_1_Remember : ComponentActivity() {
     @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,8 +35,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             MyComposeSampleTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
+                    Greeting2(
                         modifier = Modifier.padding(innerPadding)
                     )
                 }
@@ -34,17 +45,25 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
+fun Greeting2(modifier: Modifier = Modifier) {
+    var inPutname by remember { mutableStateOf("") }
+    Column {
+        Text(
+            text = "Hello $inPutname!",
+            modifier = modifier
+        )
+
+        OutlinedTextField(
+            value = inPutname,
+            onValueChange = {inPutname = it}
+        )
+    }
 }
 
 @Preview(showBackground = true)
 @Composable
-fun GreetingPreview() {
+fun GreetingPreview2() {
     MyComposeSampleTheme {
-        Greeting("Android")
+        Greeting2()
     }
 }

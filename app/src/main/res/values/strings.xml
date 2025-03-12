@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MyComposeSample</string>
+    <string name="title_activity_sample1">Sample_1</string>
+    <string name="title_activity_sample2_state">Sample_2_State</string>
 </resources>
