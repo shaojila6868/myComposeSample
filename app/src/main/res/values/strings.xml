@@ -2,4 +2,5 @@
     <string name="app_name">MyComposeSample</string>
     <string name="title_activity_sample1">Sample_1</string>
     <string name="title_activity_sample2_state">Sample_2_State</string>
+    <string name="title_activity_sample3_side_effect">Sample_3_SideEffect</string>
 </resources>

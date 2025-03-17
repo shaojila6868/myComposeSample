@@ -116,6 +116,18 @@ fun ContactList2(contactListState: ContactListState) {
     }
 }
 
+@Composable
+fun ContactList3(isLoading: Boolean, names: List<String>) {
+    Box(modifier = Modifier.fillMaxSize()) {
+        if (isLoading) {
+            CircularProgressIndicator()
+        } else {
+            Text(text = names.toString())
+        }
+    }
+}
+
+
 @Stable
 data class ContactListState(
     val isLoading: Boolean,
