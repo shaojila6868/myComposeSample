@@ -7,6 +7,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
@@ -47,6 +48,7 @@ class Sample_1_Remember : ComponentActivity() {
 @Composable
 fun Greeting2(modifier: Modifier = Modifier) {
     var inPutname by remember { mutableStateOf("") }
+    var isVisible by remember { mutableStateOf(false) }
     Column {
         Text(
             text = "Hello $inPutname!",
@@ -57,6 +59,16 @@ fun Greeting2(modifier: Modifier = Modifier) {
             value = inPutname,
             onValueChange = {inPutname = it}
         )
+
+        Button(onClick = {
+            isVisible = !isVisible
+        }) {
+            Text("보이기")
+        }
+
+        if (isVisible) {
+            Text("나 보였다")
+        }
     }
 }
 
