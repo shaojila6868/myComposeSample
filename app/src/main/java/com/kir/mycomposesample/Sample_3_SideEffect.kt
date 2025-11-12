@@ -6,18 +6,23 @@ import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
+import androidx.compose.material3.LocalContentColor
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.DisposableEffectScope
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.SideEffect
+import androidx.compose.runtime.compositionLocalOf
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
@@ -27,6 +32,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshotFlow
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.tooling.preview.Preview
@@ -35,6 +41,7 @@ import com.kir.mycomposesample.ui.theme.MyComposeSampleTheme
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.count
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
@@ -84,6 +91,12 @@ import kotlinx.coroutines.withContext
  *
  *  https://thinking-face.tistory.com/387
  *
+ * [7] SideEffect : [UseSideEffectWithViewModel]
+ *  - Composable이 완료된 후 호출된다.즉 250라인처럼 클릭 할 때 호출 할 수 있지만
+ *      244라인처럼 해당 Composable이 빌드완료되면(Composable) 호출 한다.
+ *      즉 버튼 클릭 할 때 stete가 변경되어 reComposible 된 후 호출된다.
+ *
+ *
  */
 class Sample_3_SideEffect : ComponentActivity() {
 
@@ -95,8 +108,10 @@ class Sample_3_SideEffect : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             MyComposeSampleTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) {
-                    UseLaunchedEffect()
+                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+                    Column (modifier = Modifier.padding(innerPadding)) {
+                        GreetingPreview4()
+                    }
                 }
             }
         }
@@ -115,6 +130,7 @@ class Sample_3_SideEffect : ComponentActivity() {
             text = "Launched Effect Name : $name",
             modifier = Modifier
         )
+
 
     }
 
@@ -151,6 +167,14 @@ class Sample_3_SideEffect : ComponentActivity() {
          *  count가 변경 되더라고 updateValue는 감지 할 수 없음
         **/
 //        val updateValue by remember { mutableIntStateOf(value) }
+        /***
+         * 그런데 여기서 중요 한거는 remember는 한번만 실행되기 때문에 한번 remember 한거는 다시 들어와도 호출되지 않는다.
+         * 그래서 들어올떄마다 호출하게 하려면 rememberUpdatedState사용.value값이 변경되었을 떄
+         * 여기서 그외 2가지 기타 해결방안(rememberUpdatedState 사용하지 않고)
+         * [1] remember(key = value) {mutableIntStateOf(value)} : key를 설정함으로서 value값이 변경되면 호출한다
+         * [2] 그냥 updateValue = value : 그냥 reComposible로 들어 올떄마다 값을 부여해준다
+         *
+         * */
 
         Text("Sub Count: $updateValue")
     }
@@ -214,20 +238,63 @@ class Sample_3_SideEffect : ComponentActivity() {
         )
 
         Text("derivedStateOf :${submitEnable.value}")
+
+
+    }
+
+    class MyViewModel {
+        var lastUiState: String = ""
+            private set
+
+        fun updateState(newState: String) {
+            lastUiState = newState
+            Log.i("MyViewModel", "ViewModel에 저장된 상태: $newState")
+        }
+    }
+
+    val viewModel = MyViewModel()
+
+    @Composable
+    fun UseSideEffectWithViewModel() {
+        var count by remember { mutableIntStateOf(0) }
+
+        // Compose 상태 -> ViewModel 반영, Composible 완료된 후 호출 한다
+        SideEffect {
+            viewModel.updateState("현재 카운트: $count")
+        }
+
+        Column {
+            Text("Count: $count")
+            Button(onClick = { count++ }) {
+                Text("카운트 증가")
+//                viewModel.updateState("현재 카운트: $count")
+            }
+        }
+
+
+    }
+
+    val LocalUserName = compositionLocalOf<String> { error("No default provided") }
+
+    @Composable
+    fun AppContent() {
+        CompositionLocalProvider(LocalUserName provides "DarkKir") {
+
+        }
+
     }
 
     @Preview(showBackground = true)
     @Composable
     fun GreetingPreview4() {
-        MyComposeSampleTheme {
-            Column {
-                UseLaunchedEffect()
-                UseLaunchedEffect2()
-                UseRememberCoroutineScope()
-                UseDisposableEffect()
-                UseSideEffect()
-                UseDerivedStateOf()
-            }
+        Column {
+            UseLaunchedEffect()
+            UseLaunchedEffect2()
+            UseRememberCoroutineScope()
+            UseDisposableEffect()
+            UseSideEffect()
+            UseDerivedStateOf()
+            UseSideEffectWithViewModel()
         }
     }
 

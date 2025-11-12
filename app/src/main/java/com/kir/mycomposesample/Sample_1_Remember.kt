@@ -1,5 +1,6 @@
 package com.kir.mycomposesample
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -14,6 +15,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.kir.mycomposesample.ui.theme.MyComposeSampleTheme
@@ -45,10 +47,12 @@ class Sample_1_Remember : ComponentActivity() {
     }
 }
 
+@SuppressLint("UnrememberedMutableState")
 @Composable
 fun Greeting2(modifier: Modifier = Modifier) {
     var inPutname by remember { mutableStateOf("") }
     var isVisible by remember { mutableStateOf(false) }
+    val countState = mutableStateOf(0)
     Column {
         Text(
             text = "Hello $inPutname!",
@@ -69,6 +73,16 @@ fun Greeting2(modifier: Modifier = Modifier) {
         if (isVisible) {
             Text("나 보였다")
         }
+
+        Text(
+            text = "countState ${countState.value}",
+            modifier = modifier
+        )
+
+        Button(onClick = { countState.value += 1 }) {
+            Text("카운트 추가")
+        }
+
     }
 }
 

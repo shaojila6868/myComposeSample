@@ -10,8 +10,23 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.MyComposeSample"
-        >
+        android:theme="@style/Theme.MyComposeSample">
+        <activity
+            android:name=".ui.component.ConstraingLayoutActivity"
+            android:exported="true"
+            android:label="@string/title_activity_constraing_layout"
+            android:theme="@style/Theme.MyComposeSample" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.component.BoxWithConstraintsActivity"
+            android:exported="false"
+            android:label="@string/title_activity_box_with_constraints"
+            android:theme="@style/Theme.MyComposeSample" />
         <activity
             android:name=".ui.component.Component_1_HorizontalPager"
             android:exported="false"
@@ -19,9 +34,11 @@
             android:theme="@style/Theme.MyComposeSample" />
         <activity
             android:name=".Sample_3_SideEffect"
-            android:exported="false"
+            android:exported="true"
             android:label="@string/title_activity_sample3_side_effect"
-            android:theme="@style/Theme.MyComposeSample" />
+            android:theme="@style/Theme.MyComposeSample">
+
+        </activity>
         <activity
             android:name=".Sample_2_State"
             android:exported="true"
@@ -36,13 +53,7 @@
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name"
-            android:theme="@style/Theme.MyComposeSample">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:theme="@style/Theme.MyComposeSample" />
     </application>
 
 </manifest>

@@ -4,4 +4,6 @@
     <string name="title_activity_sample2_state">Sample_2_State</string>
     <string name="title_activity_sample3_side_effect">Sample_3_SideEffect</string>
     <string name="title_activity_component1_horizontal_pager">Component_1_HorizontalPager</string>
+    <string name="title_activity_box_with_constraints">BoxWithConstraintsActivity</string>
+    <string name="title_activity_constraing_layout">ConstraingLayoutActivity</string>
 </resources>

@@ -5,19 +5,19 @@
       <SelectionState runConfigName="app">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="GreetingPreview3">
+      <SelectionState runConfigName="drawArcFun">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="ContactList2Preview4">
+      <SelectionState runConfigName="Sample_3_SideEffect">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="GreetingPreview4">
+      <SelectionState runConfigName="IntrinsicSizeMin">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="GreetingPreview4 (1)">
+      <SelectionState runConfigName="Sample_1_Remember">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="GreetingPreview2">
+      <SelectionState runConfigName="sample_1_withTransform">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>
