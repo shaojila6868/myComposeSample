@@ -5,19 +5,19 @@
       <SelectionState runConfigName="app">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="drawArcFun">
+      <SelectionState runConfigName="ss">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="Sample_3_SideEffect">
+      <SelectionState runConfigName="sample_1_switch">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="IntrinsicSizeMin">
+      <SelectionState runConfigName="sample_2_slide">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="Sample_1_Remember">
+      <SelectionState runConfigName="WheelPickerPreview">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
-      <SelectionState runConfigName="sample_1_withTransform">
+      <SelectionState runConfigName="WheelPickerPreviewFixed">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>

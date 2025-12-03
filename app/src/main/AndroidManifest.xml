@@ -12,10 +12,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyComposeSample">
         <activity
+            android:name=".labratory.LabratoryActivity"
+            android:exported="false"
+            android:label="@string/title_activity_labratory"
+            android:theme="@style/Theme.MyComposeSample" />
+        <activity
             android:name=".ui.component.ConstraingLayoutActivity"
             android:exported="true"
             android:label="@string/title_activity_constraing_layout"
-            android:theme="@style/Theme.MyComposeSample" >
+            android:theme="@style/Theme.MyComposeSample">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -36,9 +41,7 @@
             android:name=".Sample_3_SideEffect"
             android:exported="true"
             android:label="@string/title_activity_sample3_side_effect"
-            android:theme="@style/Theme.MyComposeSample">
-
-        </activity>
+            android:theme="@style/Theme.MyComposeSample"></activity>
         <activity
             android:name=".Sample_2_State"
             android:exported="true"

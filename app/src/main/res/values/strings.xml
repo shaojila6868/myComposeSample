@@ -6,4 +6,5 @@
     <string name="title_activity_component1_horizontal_pager">Component_1_HorizontalPager</string>
     <string name="title_activity_box_with_constraints">BoxWithConstraintsActivity</string>
     <string name="title_activity_constraing_layout">ConstraingLayoutActivity</string>
+    <string name="title_activity_labratory">LabratoryActivity</string>
 </resources>

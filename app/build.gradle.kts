@@ -40,6 +40,7 @@ android {
 }
 
 dependencies {
+    val compose_version = "1.6.8"
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
@@ -60,5 +61,6 @@ dependencies {
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.constraintlayout.compose)
+    implementation("androidx.compose.material:material-icons-extended:${compose_version}")
 
 }
