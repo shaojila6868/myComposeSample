@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.hilt.android) //Hilt 설정
+    kotlin("kapt") //Hilt 설정
 }
 
 android {
@@ -40,6 +42,9 @@ android {
 }
 
 dependencies {
+    implementation(libs.androidx.appcompat)
+    implementation(libs.material)
+    implementation(libs.androidx.activity)
     val compose_version = "1.6.8"
 
     implementation(libs.androidx.core.ktx)
@@ -61,6 +66,6 @@ dependencies {
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.constraintlayout.compose)
-    implementation("androidx.compose.material:material-icons-extended:${compose_version}")
-
+    implementation(libs.hilt.android) //Hilt 설정
+    kapt(libs.hilt.android.compiler) //Hilt 설정
 }

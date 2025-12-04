@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <application
+        android:name=".ProApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -11,6 +12,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyComposeSample">
+        <activity
+            android:name=".labratory.hiltlib.HiltActivity"
+            android:exported="true"
+            android:theme="@style/Theme.MyComposeSample">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".labratory.LabratoryActivity"
             android:exported="false"
@@ -21,11 +32,7 @@
             android:exported="true"
             android:label="@string/title_activity_constraing_layout"
             android:theme="@style/Theme.MyComposeSample">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".ui.component.BoxWithConstraintsActivity"
@@ -41,7 +48,7 @@
             android:name=".Sample_3_SideEffect"
             android:exported="true"
             android:label="@string/title_activity_sample3_side_effect"
-            android:theme="@style/Theme.MyComposeSample"></activity>
+            android:theme="@style/Theme.MyComposeSample" />
         <activity
             android:name=".Sample_2_State"
             android:exported="true"
@@ -55,7 +62,6 @@
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:label="@string/app_name"
             android:theme="@style/Theme.MyComposeSample" />
     </application>
 

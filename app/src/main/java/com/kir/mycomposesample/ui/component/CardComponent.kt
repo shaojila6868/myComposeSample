@@ -54,4 +54,3 @@ fun sample_1_Card() {
         }
     }
 }
-

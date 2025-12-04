@@ -10,7 +10,7 @@ import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Circle
+import androidx.compose.material.icons.filled.Info
 import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
@@ -119,7 +119,7 @@ fun CommonSlider(
                     .background(color = Color.White, shape = RoundedCornerShape(50))
             }
             CommonIcon(
-                imageVector = Icons.Filled.Circle,
+                imageVector = Icons.Filled.Info,
                 tint = thumbColor,
                 contentDescription = "",
                 modifier = modifier

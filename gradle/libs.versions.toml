@@ -1,5 +1,8 @@
 [versions]
-agp = "8.7.3"
+agp = "8.13.1"
+hiltAndroid = "2.57.2"
+hiltAndroidCompiler = "2.57.2"
+hiltAndroidVersion = "2.57.2"
 kotlin = "2.0.0"
 coreKtx = "1.10.1"
 junit = "4.13.2"
@@ -10,9 +13,14 @@ activityCompose = "1.8.0"
 composeBom = "2024.04.01"
 navigationComposeJvmstubs = "2.9.4"
 appcompatResources = "1.7.1"
+appcompat = "1.7.1"
+material = "1.13.0"
+activity = "1.12.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hiltAndroidVersion" } #Hilt 설정
+hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hiltAndroidCompiler" } #Hilt 설정
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
@@ -30,10 +38,13 @@ androidx-navigation-compose = { group = "androidx.navigation", name = "navigatio
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version ="2.2.1"}
 androidx-constraintlayout-compose = { group = "androidx.constraintlayout", name = "constraintlayout-compose", version ="1.1.1"}
 androidx-appcompat-resources = { group = "androidx.appcompat", name = "appcompat-resources", version.ref = "appcompatResources" }
-
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+hilt-android = {id = "com.google.dagger.hilt.android", version.ref = "hiltAndroidCompiler"} #Hilt 설정
 
